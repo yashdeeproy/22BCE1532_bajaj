@@ -1,20 +1,31 @@
-# BFHL REST API
+# 🚀 BFHL REST API - 22BCE1532
 
-A Node.js REST API built with Express.js that processes arrays and categorizes elements according to specific logic requirements.
+[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/yashdeeproy/22BCE1532_bajaj)
 
-## 🚀 Features
+A professional Node.js REST API built with Express.js that processes arrays and categorizes elements according to specific business logic requirements.
 
-- **POST /bfhl**: Main endpoint that processes input array
-- **GET /bfhl**: Returns operation code
-- **GET /health**: Health check endpoint
-- Error handling and input validation
-- CORS enabled for cross-origin requests
+## 👨‍💻 Developer Information
+
+- **Name**: Yashdeep Roy
+- **Roll Number**: 22BCE1532
+- **Email**: yashdeeproy2004@gmail.com
+- **Repository**: [https://github.com/yashdeeproy/22BCE1532_bajaj](https://github.com/yashdeeproy/22BCE1532_bajaj)
+
+## 🌟 Features
+
+- **Dynamic User ID Generation** with current date (DDMMYYYY format)
+- **Professional MVC Architecture** with controllers, routes, and middleware
+- **Comprehensive Data Processing** for numbers, alphabets, and special characters
+- **Advanced String Concatenation** with reverse order alternating caps
+- **Robust Error Handling** and input validation
+- **CORS Enabled** for cross-origin requests
+- **Production Ready** with deployment configurations
 
 ## 📋 API Specification
 
-### POST /bfhl
+### Main Endpoint: POST /bfhl
 
-**Request Body:**
+**Request:**
 ```json
 {
   "data": ["a", "1", "334", "4", "R", "$"]
@@ -25,8 +36,8 @@ A Node.js REST API built with Express.js that processes arrays and categorizes e
 ```json
 {
   "is_success": true,
-  "user_id": "yash_sharma_15102001",
-  "email": "yash.sharma@example.com",
+  "user_id": "yashdeeproy_29082025",
+  "email": "yashdeeproy2004@gmail.com",
   "roll_number": "22BCE1532",
   "odd_numbers": ["1"],
   "even_numbers": ["334", "4"],
@@ -37,52 +48,72 @@ A Node.js REST API built with Express.js that processes arrays and categorizes e
 }
 ```
 
-### Response Fields
+### Additional Endpoints
 
-1. **is_success**: Boolean indicating operation status
-2. **user_id**: User identifier in format `{name_ddmmyyyy}`
-3. **email**: User email address
-4. **roll_number**: College roll number
-5. **odd_numbers**: Array of odd numbers as strings
-6. **even_numbers**: Array of even numbers as strings
-7. **alphabets**: Array of alphabetical strings in uppercase
-8. **special_characters**: Array of special characters
-9. **sum**: Sum of all numbers as string
-10. **concat_string**: Concatenated alphabets in reverse order with alternating caps
+| Method | Endpoint | Description | Response |
+|--------|----------|-------------|----------|
+| GET | `/bfhl` | Operation code | `{"operation_code": 1}` |
+| GET | `/health` | Health check | `{"status": "OK", "message": "Server is running"}` |
+| GET | `/` | API information | API documentation |
+
+## 🏗️ Project Structure
+
+```
+22BCE1532_bajaj/
+├── config/
+│   └── userConfig.js          # User configuration & dynamic date
+├── controllers/
+│   └── bfhlController.js      # Business logic controllers
+├── middleware/
+│   └── validation.js          # Input validation & error handling
+├── routes/
+│   ├── bfhlRoutes.js         # BFHL specific routes
+│   └── index.js              # General API routes
+├── utils/
+│   └── dataProcessor.js      # Data processing utilities
+├── index.js                  # Main application entry point
+├── test.js                   # Test suite
+├── vercel.json              # Deployment configuration
+└── package.json             # Project dependencies
+```
 
 ## 🧮 Processing Logic
 
-### Number Classification
-- Numbers are identified using `parseInt()` and `isNaN()` checks
-- Odd/even classification based on modulo operation
-- All numbers returned as strings
+### 1. Number Classification
+- **Odd Numbers**: Numbers with remainder 1 when divided by 2
+- **Even Numbers**: Numbers with remainder 0 when divided by 2
+- **Sum Calculation**: Total of all numeric values
+- **Format**: All numbers returned as strings
 
-### Alphabet Processing
-- Single characters: Converted to uppercase
-- Multi-character strings: If all alphabetic, converted to uppercase
-- Mixed strings: If contains alphabets, treated as alphabetic
+### 2. Alphabet Processing
+- **Single Characters**: Converted to uppercase (a → A)
+- **Multi-character Strings**: All alphabetic strings uppercased
+- **Mixed Content**: Strings containing any alphabets treated as alphabetic
 
-### Special Characters
-- Any single character that is not alphanumeric
-- Symbols like `$`, `@`, `#`, `%`, etc.
+### 3. Special Characters
+- **Definition**: Non-alphanumeric single characters
+- **Examples**: `$`, `@`, `#`, `%`, `&`, `*`, `-`, `+`
 
-### Concatenation String Algorithm
+### 4. Concatenation Algorithm
 1. Extract all alphabetical characters from alphabet array
 2. Convert to lowercase
-3. Reverse the character order
-4. Apply alternating capitalization (1st=upper, 2nd=lower, etc.)
+3. Reverse the character sequence
+4. Apply alternating capitalization (1st=Upper, 2nd=Lower, 3rd=Upper...)
+
+**Example**: `["A", "ABCD", "DOE"]` → `"EoDdCbAa"`
 
 ## 🛠️ Installation & Setup
 
 ### Prerequisites
 - Node.js (v14 or higher)
-- npm
+- npm or yarn
+- Git
 
 ### Local Development
 
 1. **Clone the repository**
    ```bash
-   git clone <repository-url>
+   git clone https://github.com/yashdeeproy/22BCE1532_bajaj.git
    cd 22BCE1532_bajaj
    ```
 
@@ -91,114 +122,77 @@ A Node.js REST API built with Express.js that processes arrays and categorizes e
    npm install
    ```
 
-3. **Start the server**
-   ```bash
-   npm start
-   ```
-   
-   Or for development with auto-reload:
+3. **Start development server**
    ```bash
    npm run dev
    ```
+   Server will start at `http://localhost:3000`
 
-4. **Test the API**
+4. **Run tests**
    ```bash
-   curl -X POST -H "Content-Type: application/json" \
-        -d '{"data": ["a","1","334","4","R", "$"]}' \
-        http://localhost:3000/bfhl
+   npm test
    ```
 
-## 🧪 Testing
+## 🧪 Testing Examples
 
-Run the test suite:
+### Example A - Mixed Data
 ```bash
-npm test
+curl -X POST http://localhost:3000/bfhl \
+  -H "Content-Type: application/json" \
+  -d '{"data": ["a","1","334","4","R", "$"]}'
 ```
 
-The test file (`test.js`) includes:
-- All provided examples (A, B, C)
-- Edge cases (empty array, single type arrays)
-- Logic validation for each component
+### Example B - Complex Array
+```bash
+curl -X POST http://localhost:3000/bfhl \
+  -H "Content-Type: application/json" \
+  -d '{"data": ["2","a","y","4","&","-","*","5","92","b"]}'
+```
+
+### Example C - Alphabets Only
+```bash
+curl -X POST http://localhost:3000/bfhl \
+  -H "Content-Type: application/json" \
+  -d '{"data": ["A","ABcD","DOE"]}'
+```
 
 ## 🌐 Deployment
 
-### Vercel Deployment
-
-1. **Install Vercel CLI**
-   ```bash
-   npm i -g vercel
-   ```
-
-2. **Deploy**
-   ```bash
-   vercel
-   ```
-
-3. **Follow the prompts**
-   - Link to existing project or create new
-   - Choose Node.js runtime
-   - Use default build settings
-
-### Alternative Platforms
-
-The API can also be deployed on:
-- **Railway**: Connect GitHub repo and deploy
-- **Render**: Connect GitHub repo and set build command
-- **Heroku**: Use `heroku create` and `git push heroku main`
-
-## 📝 Example Usage
-
-### Example A
+### Vercel (Recommended)
 ```bash
-curl -X POST https://your-api-url.vercel.app/bfhl \
-     -H "Content-Type: application/json" \
-     -d '{"data": ["a","1","334","4","R", "$"]}'
+npm install -g vercel
+vercel login
+vercel
 ```
 
-### Example B
-```bash
-curl -X POST https://your-api-url.vercel.app/bfhl \
-     -H "Content-Type: application/json" \
-     -d '{"data": ["2","a","y","4","&","-","*","5","92","b"]}'
-```
+### Railway
+1. Connect GitHub repository at [railway.app](https://railway.app)
+2. Auto-deploy from main branch
 
-### Example C
-```bash
-curl -X POST https://your-api-url.vercel.app/bfhl \
-     -H "Content-Type: application/json" \
-     -d '{"data": ["A","ABcD","DOE"]}'
-```
+### Render
+1. Create web service at [render.com](https://render.com)
+2. Connect repository and deploy
 
-## 🔧 Configuration
+## 📊 Performance Features
 
-Update the `USER_INFO` object in `index.js` with your personal details:
+- **Fast Response Times**: Optimized algorithms
+- **Scalable Architecture**: Modular design
+- **Error Resilience**: Comprehensive error handling
+- **Input Validation**: Robust request validation
+- **Dynamic Configuration**: Runtime user ID generation
 
-```javascript
-const USER_INFO = {
-    user_id: "your_name_ddmmyyyy",
-    email: "your.email@example.com",
-    roll_number: "YOUR_ROLL_NUMBER"
-};
-```
+## 🔧 Environment Variables
 
-## 📊 API Endpoints
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST   | /bfhl    | Main processing endpoint |
-| GET    | /bfhl    | Returns operation code |
-| GET    | /health  | Health check |
-| GET    | /        | API information |
+The application automatically handles:
+- `PORT`: Server port (default: 3000)
+- Dynamic date generation for user_id
+- CORS configuration for cross-origin requests
 
 ## 🚨 Error Handling
 
-The API includes comprehensive error handling:
+### Common Error Responses
 
-- **400 Bad Request**: Invalid input format
-- **500 Internal Server Error**: Server processing errors
-- **404 Not Found**: Invalid endpoints
-
-Example error response:
+**Invalid Input (400)**
 ```json
 {
   "is_success": false,
@@ -206,22 +200,60 @@ Example error response:
 }
 ```
 
-## 🔗 Dependencies
+**Server Error (500)**
+```json
+{
+  "is_success": false,
+  "error": "Internal server error"
+}
+```
 
-- **express**: Web framework for Node.js
-- **cors**: Cross-Origin Resource Sharing middleware
-- **nodemon**: Development dependency for auto-reload
+**Not Found (404)**
+```json
+{
+  "is_success": false,
+  "error": "Endpoint not found"
+}
+```
 
-## 📄 License
+## 📈 API Usage Statistics
 
-MIT License
+- **Response Format**: JSON
+- **Status Codes**: 200 (Success), 400 (Bad Request), 404 (Not Found), 500 (Server Error)
+- **Content-Type**: application/json
+- **CORS**: Enabled for all origins
 
-## 👤 Author
+## 🎯 Business Logic Requirements Met
 
-**22BCE1532**
-- Email: yash.sharma@example.com
+✅ **Dynamic User ID**: `yashdeeproy_DDMMYYYY`  
+✅ **Array Processing**: Numbers, alphabets, special characters  
+✅ **String Concatenation**: Reverse order with alternating caps  
+✅ **Sum Calculation**: All numbers as string  
+✅ **Error Handling**: Comprehensive validation  
+✅ **Professional Structure**: MVC architecture  
+✅ **Production Ready**: Deployment configured  
+
+## 📝 License
+
+MIT License - See LICENSE file for details
+
+## 🤝 Contributing
+
+1. Fork the repository
+2. Create a feature branch
+3. Commit your changes
+4. Push to the branch
+5. Create a Pull Request
+
+## 📧 Contact
+
+**Yashdeep Roy**
+- Email: yashdeeproy2004@gmail.com
+- GitHub: [@yashdeeproy](https://github.com/yashdeeproy)
 - Roll Number: 22BCE1532
 
 ---
 
-**Note**: Remember to update the personal information in the code before deployment!
+**⭐ Star this repository if you found it helpful!**
+
+Built with ❤️ using Node.js and Express.js
