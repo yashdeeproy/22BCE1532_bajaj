@@ -1,0 +1,24 @@
+{
+  "name": "bfhl-api",
+  "version": "1.0.0",
+  "description": "REST API for processing arrays with specific logic",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js",
+    "test": "node test.js"
+  },
+  "keywords": ["api", "express", "nodejs", "bfhl"],
+  "author": "22BCE1532",
+  "license": "MIT",
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  }
+}
